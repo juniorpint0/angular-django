@@ -22,3 +22,5 @@ Git
 git status
 git init
 vim .gitignore
+git add .
+git commit -m "Frist commit"

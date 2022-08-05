@@ -1,5 +1,6 @@
 import { ApiService } from './api.service';
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -19,7 +20,7 @@ export class AppComponent {
 
   // private members = [];
 
-  constructor(private api:ApiService){
+  constructor(private api:ApiService, private router: Router){
     this.getMembers();
   }
 
@@ -36,16 +37,7 @@ export class AppComponent {
   };
 
   memberClicked = (member:any) => {
-    this.api.getMember(member.id).subscribe(
-      data => {
-        // this.members = data;
-        console.log(data)
-        
-    },
-    error => {
-      console.log("Aconteceu um erro", error);
-    }
-    );
+    this.router.navigate(['member-detail', member.id]);
   };
 }
 
