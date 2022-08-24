@@ -1,5 +1,4 @@
 Angular
-
 npm install -g @angular/cli
 ng new my-dream-app
 cd my-dream-app
@@ -24,3 +23,8 @@ git init
 vim .gitignore
 git add .
 git commit -m "Frist commit"
+
+
+venv
+
+pip freeze > requirements.txt
