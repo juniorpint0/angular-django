@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, ParamMap } from '@angular/router';
+import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { ApiService } from './api.service';
+import { AppComponent } from './../app.component';
 
 @Component({
   selector: 'app-members-detail',
@@ -9,8 +10,13 @@ import { ApiService } from './api.service';
 })
 export class MembersDetailComponent implements OnInit {
 
-  constructor(private route: ActivatedRoute, private api: ApiService) { }
-  selected_members: any;
+  constructor(
+    private route: ActivatedRoute,
+     private api: ApiService,
+     private router: Router,
+     private appComponent: AppComponent
+     ) { }
+  selected_member: any = {};
   selected_id: any;
 
   ngOnInit(): void {
@@ -27,7 +33,7 @@ export class MembersDetailComponent implements OnInit {
     
     this.api.getMember(id).subscribe(
       data => {
-        this.selected_members = data;
+        this.selected_member = data;
       }
       ,
       error => {
@@ -35,4 +41,39 @@ export class MembersDetailComponent implements OnInit {
       }
     );
   }
+
+  update(){
+    this.api.updateMember(this.selected_member).subscribe(
+      data => {
+        this.selected_member = data;
+      }
+      ,
+      error => {
+        console.log("Aconteceu um erro", error);
+      }
+    );
+  }
+  delete(){
+    this.api.deleteMember(this.selected_id).subscribe(
+      data => {
+        let index: any;
+        this.appComponent.members.forEach((e, i) =>{
+          if(e.id == this.selected_id)
+            index = i;
+            
+        });
+        this.appComponent.members.splice(index, 1);
+      }
+      ,
+      error => {
+        console.log("Aconteceu um erro", error);
+      }
+    );
+  }
+
+  newMember(){
+    this.router.navigate(['new-member'])
+  }
+
+  
 }

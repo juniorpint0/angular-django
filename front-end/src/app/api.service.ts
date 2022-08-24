@@ -7,7 +7,10 @@ import { Observable } from 'rxjs';
 })
 export class ApiService {
   baseUrl = 'http://localhost:8000/';
-  httpHeaders = new HttpHeaders({'Content-Type': 'application/json'});
+  token = 'Token ea0ba27b9237a83c4bda06a909a79ad6548c219c';
+
+  httpHeaders = new HttpHeaders().set('Content-Type', 'application/json')
+    .set('Authorization', this.token);
   constructor(private http: HttpClient) { }
 
   getAllMembers(): Observable<any> {
@@ -16,6 +19,10 @@ export class ApiService {
   }
   getMember(id:any): Observable<any> {
     return this.http.get(this.baseUrl + 'members/' + id + '/',
+    {headers: this.httpHeaders});
+  }
+  saveNewMember(member:any): Observable<any> {
+    return this.http.post(this.baseUrl + 'members/', member,
     {headers: this.httpHeaders});
   }
 

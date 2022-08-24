@@ -1,4 +1,15 @@
-<p>members-detail works!</p>
-Membro carregado: {{ selected_members?.name }} {{ selected_members?.surname }}
+<h1>Member Details Component</h1>
+<span>Membro carregado:</span> {{ selected_member?.name }} {{ selected_member?.surname }}
 
-<p>Selected id = {{selected_id}}</p>
+<span class="image left">
+     <img src="{{selected_member.photo}}" alt="Foto de {{selected_member.name}}">
+</span>
+
+<input class="form" type="text" [(ngModel)]="selected_member.id" placeholder="ID" readonly>
+<input class="form" type="text" [(ngModel)]="selected_member.name" placeholder="Name">
+<input class="form" type="text" [(ngModel)]="selected_member.surname" placeholder="Surname">
+<input class="form" type="text" [(ngModel)]="selected_member.phone" placeholder="Phone">
+<button class="button" (click)="update()">Update Member</button>
+<button class="button" (click)="delete()">Delete Member</button>
+
+<button class="button primary" (click)="newMember()">New Member</button>

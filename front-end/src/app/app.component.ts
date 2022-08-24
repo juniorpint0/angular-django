@@ -13,9 +13,9 @@ export class AppComponent {
 
 
   members = [
-    {name: 'João', id: 1, surname: 'Amorin', photo: 'http://www.facebook.com/photo1'},
-    {name: 'Pedro', id: 2, surname: 'Henrique', photo: 'http://www.facebook.com/photo2'},
-    {name: 'Vitor', id: 3, surname: 'Guilherme', photo: 'http://www.facebook.com/photo3'}
+    {name: 'João', id: 1, surname: 'Amorin', photo: 'http://www.facebook.com/photo1', phone:'99'},
+    { name: 'Pedro', id: 2, surname: 'Henrique', photo: 'http://www.facebook.com/photo2', phone: '99' },
+    { name: 'Vitor', id: 3, surname: 'Guilherme', photo: 'http://www.facebook.com/photo3', phone: '99' }
   ]
 
   // private members = [];
