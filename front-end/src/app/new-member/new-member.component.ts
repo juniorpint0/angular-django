@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ApiService } from './../api.service';
 import { AppComponent } from './../app.component';
 
@@ -11,7 +12,8 @@ export class NewMemberComponent implements OnInit {
   member: any = {}
   constructor(
     private api: ApiService,
-    private appComponent: AppComponent
+    private appComponent: AppComponent,
+    private router: Router,
   ) { }
 
   ngOnInit(): void {
@@ -20,14 +22,18 @@ export class NewMemberComponent implements OnInit {
   save(){
     this.api.saveNewMember(this.member).subscribe(
       data => {
-        this.appComponent.members.push(data)
-        console.log(data);
-      }
-      
+        this.appComponent.members.push(data);
+        this.router.navigate(['']);
+      }     
       ,
       error => {
         console.log("Aconteceu um erro", error);
       }
     );
   }
+  
+  cancel() {
+    this.router.navigate([''])
+  }
+
 }

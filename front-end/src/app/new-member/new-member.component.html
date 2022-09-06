@@ -1,9 +1,10 @@
 <h2>New Member!</h2>
 
-
-<!-- <input type="text" [(ngModel)]="member.id" placeholder="ID" readonly> -->
-<!-- <label for="">Nome</label> -->
 <input class="form" type="text" [(ngModel)]="member.name" placeholder="Name">
 <input class="form" type="text" [(ngModel)]="member.surname" placeholder="Surname">
 <input class="form" type="text" [(ngModel)]="member.phone" placeholder="Phone">
+<input class="form" type="email" [(ngModel)]="member.email" placeholder="Email">
+<input class="form" type="text" [(ngModel)]="member.address" placeholder="Address">
+
 <button class="button primary" (click)="save()">Save Member</button>
+<button class="button" (click)="cancel()">Cancel</button>

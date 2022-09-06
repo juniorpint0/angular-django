@@ -12,25 +12,24 @@ export class MembersDetailComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-     private api: ApiService,
-     private router: Router,
-     private appComponent: AppComponent
-     ) { }
+    private api: ApiService,
+    private router: Router,
+    private appComponent: AppComponent
+    ) { }
   selected_member: any = {};
   selected_id: any;
+  
 
   ngOnInit(): void {
     this.route.paramMap.subscribe((param: ParamMap) => {
       let id = param.get('id');
       this.selected_id = id;
       this.loadMember(id);
-    })
-    
+    })    
   }
 
 
-  loadMember(id:any) {
-    
+  loadMember(id:any) {    
     this.api.getMember(id).subscribe(
       data => {
         this.selected_member = data;
@@ -73,7 +72,5 @@ export class MembersDetailComponent implements OnInit {
 
   newMember(){
     this.router.navigate(['new-member'])
-  }
-
-  
+  }  
 }
