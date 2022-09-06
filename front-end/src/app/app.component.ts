@@ -13,14 +13,14 @@ export class AppComponent {
 
 
   members = [
-    {name: 'João', id: 1, surname: 'Amorin', photo: 'http://www.facebook.com/photo1', phone:'99'},
+    { name: 'João', id: 1, surname: 'Amorin', photo: 'http://www.facebook.com/photo1', phone: '99' },
     { name: 'Pedro', id: 2, surname: 'Henrique', photo: 'http://www.facebook.com/photo2', phone: '99' },
     { name: 'Vitor', id: 3, surname: 'Guilherme', photo: 'http://www.facebook.com/photo3', phone: '99' }
   ]
 
   // private members = [];
 
-  constructor(private api:ApiService, private router: Router){
+  constructor(private api: ApiService, private router: Router) {
     this.getMembers();
   }
 
@@ -28,16 +28,20 @@ export class AppComponent {
     this.api.getAllMembers().subscribe(
       data => {
         this.members = data;
-    }
-    ,
-    error => {
-      console.log("Aconteceu um erro", error);
-    }
+      }
+      ,
+      error => {
+        console.log("Aconteceu um erro", error);
+      }
     );
   };
 
-  memberClicked = (member:any) => {
+  memberClicked = (member: any) => {
     this.router.navigate(['member-detail', member.id]);
   };
+
+  newMember() {
+    this.router.navigate(['new-member'])
+  }
 }
 
